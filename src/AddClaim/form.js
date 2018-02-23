@@ -67,7 +67,7 @@ class AddClient extends PureComponent {
                 </div>
                 <div className="card-footer">
                     <button onClick={handleBack} type="submit" className="btn btn-sm btn-primary"><i className="fa fa-arrow-left"></i> Prev Client</button>&nbsp;
-                    <button onClick={handleNext} type="submit" className="btn btn-sm btn-primary"><i className="fa fa-arrow-right"></i> Next Claim</button>&nbsp;
+                    <button onClick={handleNext} type="submit" className="btn btn-sm btn-primary">Create Claim</button>&nbsp;
               </div>
               </div>
             </div>

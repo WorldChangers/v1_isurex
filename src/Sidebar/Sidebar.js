@@ -17,7 +17,6 @@ class Sidebar extends Component {
   // }
 
   render() {
-    console.log(this.props)
     return (
       <div className="sidebar">
         <nav className="sidebar-nav">
@@ -32,7 +31,7 @@ class Sidebar extends Component {
                   <Link to={'#'} className="nav-link" activeClassName="active"><i className="icon-puzzle"></i> View</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to={'#'} className="nav-link" activeClassName="active"><i className="icon-puzzle"></i> Add</Link>
+                  <Link to={'/clients/new'} className="nav-link" activeClassName="active"><i className="icon-puzzle"></i> Add</Link>
                 </li>
               </ul>
             </li>

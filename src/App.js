@@ -6,6 +6,9 @@ import Signup from './Signup'
 import Dashboard from './Welcome'
 //import CreateClient from './Dashboard/CreateClient'
 import Home from './Home'
+import AddClient  from './AddClient'
+import AddVehicle from './AddVehicle'
+import AddClaim from './AddClaim'
 
 class App extends Component {
   render() {
@@ -14,6 +17,9 @@ class App extends Component {
          <Router>
             <Switch>
               <Route exact path='/' component={Dashboard} />
+              <Route exact path='/clients/new' component={AddClient} />
+              <Route exact path='/vehicles/new' component={AddVehicle} />
+              <Route exact path='/claims/new' component={AddClaim} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/signup' component={Signup} />
               {/* <Route exact path='/clients/new' component={CreateClient} /> */}

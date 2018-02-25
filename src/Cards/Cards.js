@@ -32,6 +32,23 @@ class Cards extends PureComponent {
     })
   }
 
+
+  claimShow = () => {
+    return this.props.clients.clients.map((p, i) => {
+      return (
+        <tr onClick={(e) => this.clientDetails(e, p)} style={{cursor: 'pointer'}} key={i}>
+          <td>{p.fullname}</td>
+          <td>+233 {p.phone}</td>
+          <td>{p.location}</td>
+          <td>
+            <span className="badge badge-success">False</span>
+          </td>
+      </tr>
+      )
+    })
+  }
+
+
   renderPersons = () => {
     return this.props.clients.search.map((p, i) => {
       return (
@@ -48,9 +65,11 @@ class Cards extends PureComponent {
   }
 
   render() {
+    const { location } = this.props
     const {modal, details} = this.state
      const {vehicles} = details
      const {claims} =  vehicles || {}
+     console.log(this.props)
     return (
       <div>
        {
@@ -74,7 +93,8 @@ class Cards extends PureComponent {
                     </tr>
                   </thead>
                   <tbody>
-                    {this.renderPersons()}
+                    {
+                      location.pathname === '/claims' ? this.claimShow():this.renderPersons()}
                   </tbody>
                 </table>
                 <nav>

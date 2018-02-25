@@ -8,7 +8,7 @@ class Welcome extends PureComponent {
     render(){
         return (
             <Home history={this.props.history} location={this.props.location}>
-                <Cards />
+                <Cards location={this.props.location} />
 
             </Home>
         )

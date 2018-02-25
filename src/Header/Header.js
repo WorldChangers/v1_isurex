@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Dropdown, DropdownMenu, DropdownItem } from 'reactstrap';
+import { connect } from 'react-redux';
+import { signOut } from '../actions/auth';
+import { search } from '../actions/claim'
 
 class Header extends Component {
 
@@ -18,6 +21,10 @@ class Header extends Component {
     });
   }
 
+  onSearch = ({target}) => {
+      this.props.search(target.value.toLowerCase())
+  }
+
   sidebarToggle(e) {
     e.preventDefault();
     document.body.classList.toggle('sidebar-hidden');
@@ -33,7 +40,9 @@ class Header extends Component {
     document.body.classList.toggle('aside-menu-hidden');
   }
 
+
   render() {
+    const {signOut, history} = this.props
     return (
       <header className="app-header navbar">
         <button className="navbar-toggler mobile-sidebar-toggler hidden-lg-up" onClick={this.mobileSidebarToggle} type="button">&#9776;</button>
@@ -45,7 +54,7 @@ class Header extends Component {
         </ul>
         <form className="form-inline float-left b-r-1 px-2 hidden-md-down">
           <i className="fa fa-search"></i>
-          <input className="form-control" type="text" placeholder="Search..."/>
+          <input onChange={this.onSearch} value={this.props.word} className="form-control" type="text" placeholder="Search Vehicle Registration Number"/>
         </form>
         <ul className="nav navbar-nav ml-auto">
           <li className="nav-item hidden-md-down">
@@ -62,7 +71,7 @@ class Header extends Component {
 
                 <DropdownItem><i className="fa fa-user"></i> Profile</DropdownItem>
                 <DropdownItem><i className="fa fa-wrench"></i> Settings</DropdownItem>
-                <DropdownItem><i className="fa fa-lock"></i> Logout</DropdownItem>
+                <DropdownItem onClick={() => signOut(history)}><i className="fa fa-lock"></i> Logout</DropdownItem>
 
               </DropdownMenu>
             </Dropdown>
@@ -76,4 +85,8 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = ({clients}) => ({
+  word: clients.word
+})
+
+export default connect(mapStateToProps, {signOut, search})(Header);

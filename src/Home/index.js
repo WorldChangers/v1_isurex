@@ -4,13 +4,12 @@ import Sidebar from '../Sidebar/Sidebar';
 import Aside from '../Aside/Aside';
 import Footer from '../Footer/Footer';
 
-import Breadcrumbs from 'react-breadcrumbs';
 
 class Home extends Component {
   render() {
     return (
       <div className="app">
-        <Header />
+        <Header history={this.props.history}/>
         <div className="app-body">
           <Sidebar {...this.props}/>
           <main className="main">

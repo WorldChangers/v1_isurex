@@ -28,10 +28,10 @@ class Sidebar extends Component {
               <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick.bind(this)}><i className="icon-puzzle"></i> Claims</a>
               <ul className="nav-dropdown-items">
                 <li className="nav-item">
-                  <Link to={'#'} className="nav-link" activeClassName="active"><i className="icon-puzzle"></i> View</Link>
+                  <Link to={'#'} className="nav-link" ><i className="icon-puzzle"></i> View</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to={'/clients/new'} className="nav-link" activeClassName="active"><i className="icon-puzzle"></i> Add</Link>
+                  <Link to={'/clients/new'} className="nav-link" ><i className="icon-puzzle"></i> Add</Link>
                 </li>
               </ul>
             </li>
@@ -39,10 +39,10 @@ class Sidebar extends Component {
               <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick.bind(this)}><i className="icon-note"></i> Analytics</a>
               <ul className="nav-dropdown-items">
                 <li className="nav-item">
-                  <Link to={'#'} className="nav-link" activeClassName="active"><i className="icon-note"></i>View</Link>
+                  <Link to={'#'} className="nav-link" ><i className="icon-note"></i>View</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to={'#'} className="nav-link" activeClassName="active"><i className="icon-note"></i>Add</Link>
+                  <Link to={'#'} className="nav-link" ><i className="icon-note"></i>Add</Link>
                 </li>
               </ul>
             </li>
@@ -50,10 +50,10 @@ class Sidebar extends Component {
               <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick.bind(this)}><i className="icon-star"></i> Reports</a>
               <ul className="nav-dropdown-items">
                 <li className="nav-item">
-                  <Link to={'#'} className="nav-link" activeClassName="active"><i className="icon-star"></i>View</Link>
+                  <Link to={'#'} className="nav-link"><i className="icon-star"></i>View</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to={'#'} className="nav-link" activeClassName="active"><i className="icon-star"></i>Generate</Link>
+                  <Link to={'#'} className="nav-link"><i className="icon-star"></i>Generate</Link>
                 </li>
               </ul>
             </li>
@@ -65,10 +65,10 @@ class Sidebar extends Component {
               <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick.bind(this)}><i className="icon-energy"></i> Predictions</a>
               <ul className="nav-dropdown-items">
                 <li className="nav-item">
-                  <Link to={'#'} className="nav-link" activeClassName="active"><i className="icon-cursor"></i>View</Link>
+                  <Link to={'#'} className="nav-link"><i className="icon-cursor"></i>View</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to={'#'} className="nav-link" activeClassName="active"><i className="fa fa-spinner"></i>Add</Link>
+                  <Link to={'#'} className="nav-link"><i className="fa fa-spinner"></i>Add</Link>
                 </li>
               </ul>
             </li>
@@ -77,7 +77,7 @@ class Sidebar extends Component {
               <span>Settings</span>
             </li>
             <li className="nav-item">
-              <Link to={'#'} className="nav-link" activeClassName="active"><i className="icon-calculator"></i>Settings</Link>
+              <Link to={'#'} className="nav-link"><i className="icon-calculator"></i>Settings</Link>
             </li>
           </ul>
         </nav>

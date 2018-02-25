@@ -1,20 +1,52 @@
 import React, { PureComponent } from 'react'
-import { Link } from 'react-router-dom'
 import Home from '../Home'
 import Form from './form'
 
 class AddClient extends PureComponent {
-    
-    handleNext = () => {
-        this.props.history.push('/vehicles/new')
+
+    state = {
+        client: {
+            fullname: '',
+            phone: '',
+            id: '',
+            idType: '',
+            location: ''
+        },
+        error: ''
       }
+
+      async componentDidMount(){
+        const client = await localStorage.getItem('client')
+        
+        if(client){
+            return this.setState({client: JSON.parse(client)})
+        }
+      }
+
+      handleSubmit = async(e) => {
+          e.preventDefault()
+          await localStorage.setItem('client', JSON.stringify(this.state.client))
+          this.props.history.push('/vehicles/new')
+      }
+
+     handleOnChange = ({target}) => {
+         this.setState(prevState => ({
+             client: {
+                 ...prevState.client,
+                 [target.name]: target.value
+             }
+         }))
+     }
    
 
     render(){
+        const { client } = this.state
         return (
             <Home location={this.props.location}>
                 <Form 
-                    handleNext={this.handleNext}
+                    data={client}
+                    handleChange={this.handleOnChange}
+                    handleSubmit={this.handleSubmit}
                 />
             </Home>
         )

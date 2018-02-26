@@ -44,6 +44,7 @@ const AddClient = ({handleSubmit,handleChange, data}) => (
         <label htmlFor="country">Location</label>
         <input required type="text" onChange={handleChange} value={data.location} className="form-control" name='location' placeholder="Location name"/>
       </div>
+      
       <div className="card-footer">
           <button type="submit" className="btn btn-sm btn-primary"><i className="fa fa-arrow-right"></i> Next Vehicle</button>&nbsp;
     </div>

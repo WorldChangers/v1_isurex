@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 import { fetchClients } from '../actions/claim'
 import  ClientDetails from '../Modal'
+import Loader from '../Loader'
 
 class Cards extends PureComponent {
 
@@ -65,6 +66,10 @@ class Cards extends PureComponent {
   }
 
   render() {
+    if (this.props.clients.clients.length === 0){
+      return <Loader />
+    }
+   
     const { location } = this.props
     const {modal, details} = this.state
      const {vehicles} = details
@@ -73,7 +78,7 @@ class Cards extends PureComponent {
     return (
       <div>
        {
-          modal && <ClientDetails vehicles={vehicles} {...details} modal={true} toggle={this.toggle} />
+          modal && <ClientDetails {...details} modal={true} toggle={this.toggle} />
        }
       <div style={{paddingTop:10}} className="animated fadeIn">
           <div className="row">
@@ -97,18 +102,21 @@ class Cards extends PureComponent {
                       location.pathname === '/claims' ? this.claimShow():this.renderPersons()}
                   </tbody>
                 </table>
-                <nav>
-                  <ul className="pagination">
-                    <li className="page-item"><a className="page-link" href="#">Prev</a></li>
-                    <li className="page-item active">
-                      <a className="page-link" href="#">1</a>
-                    </li>
-                    <li className="page-item"><a className="page-link" href="#">2</a></li>
-                    <li className="page-item"><a className="page-link" href="#">3</a></li>
-                    <li className="page-item"><a className="page-link" href="#">4</a></li>
-                    <li className="page-item"><a className="page-link" href="#">Next</a></li>
-                  </ul>
-                </nav>
+                {
+                   location.pathname === '/claims' &&   
+                   <nav>
+                    <ul className="pagination">
+                      <li className="page-item"><a className="page-link" href="#">Prev</a></li>
+                      <li className="page-item active">
+                        <a className="page-link" href="#">1</a>
+                      </li>
+                      <li className="page-item"><a className="page-link" href="#">2</a></li>
+                      <li className="page-item"><a className="page-link" href="#">3</a></li>
+                      <li className="page-item"><a className="page-link" href="#">4</a></li>
+                      <li className="page-item"><a className="page-link" href="#">Next</a></li>
+                    </ul>
+                 </nav>
+                }
               </div>
             </div>
           </div>

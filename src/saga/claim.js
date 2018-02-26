@@ -24,7 +24,7 @@ export function* addClaimSaga(action) {
     yield localStorage.removeItem('vehicle')
     yield localStorage.removeItem('claim')
 
-    action.history.push('/')
+    action.history.push('/claims')
   } catch (e) {
      yield put({type: ERROR_CALL})
   }

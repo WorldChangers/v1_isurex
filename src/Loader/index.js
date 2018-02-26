@@ -1,38 +1,26 @@
 import React from 'react'
+import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
 
-const styles = {
-    display:'flex',
-    flex:1,
-    // position: 'fixed',
-    width: '100%',
-    height: '100%',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0,0,0,0.5)',
-    zIndex: 2
-}
+const data = [
+  'Errors using inadequate data are much less than those using no data at all',
+  'IRIS can help you calculate RISK SCORE of your clients',
+  'With IRIS, claims are not going to be delayed again',
+  'Fraudulent Claims are thing of the past with IRIS',
+  'You can have data without information, IRIS gives information',
+  'IRIS means INSURANCE RISK INFORMATION SYSTEM'
+]
 
-
-const Loader = () => (
-    <div className="animated"  style={styles}>
-    <div className="col-lg-12" style={{marginTop:'20%'}}>
-      <div className="card-block">
-         <div className="sk-cube-grid">
-          <div className="sk-cube sk-cube1"></div>
-          <div className="sk-cube sk-cube2"></div>
-          <div className="sk-cube sk-cube3"></div>
-          <div className="sk-cube sk-cube4"></div>
-          <div className="sk-cube sk-cube5"></div>
-          <div className="sk-cube sk-cube6"></div>
-          <div className="sk-cube sk-cube7"></div>
-          <div className="sk-cube sk-cube8"></div>
-          <div className="sk-cube sk-cube9"></div>
-        </div>
-    </div>
-  </div>
+const Loading = () => (
+  <div>
+    <Segment>
+      <Dimmer active style={{height: 500, width: 1050}}>
+        <Loader  size='big'>
+          <p><strong><em>{data[Math.floor(Math.random() * 6) + 0  ]}</em></strong></p>
+          <p style={{fontSize:10, color:'mint'}}><em>Your Friends from IRIS</em></p>
+        </Loader>
+      </Dimmer>
+    </Segment>
   </div>
 )
 
-export default Loader
+export default Loading

@@ -33,11 +33,13 @@ class AddClaim extends PureComponent {
             type: 'Accident'
         },
         damage: [],
-        error: ''
+        error: '',
+        isLoading: false
       }
 
       async componentDidMount(){
         const claim = await localStorage.getItem('claim')
+
         
         if(claim){
             return this.setState({claim: JSON.parse(claim)})
@@ -46,6 +48,7 @@ class AddClaim extends PureComponent {
 
       handleSubmit = async(e) => {
           e.preventDefault()
+          this.setState({isLoading:true})
           
           await localStorage.setItem('claim', JSON.stringify(this.state.claim))
           
@@ -67,10 +70,12 @@ class AddClaim extends PureComponent {
     }
 
     render(){
+        console.log(this.props.ui)
         const { claim, damage } = this.state
         return (
             <Home location={this.props.location}>
                 <Form
+                    loading={this.state.isLoading}
                     handleSubmit={this.handleSubmit}
                     handleBack={this.handleBack}
                     handleOnChange={this.handleOnChange}
@@ -83,5 +88,8 @@ class AddClaim extends PureComponent {
     }
 }
 
+const mapStateToProp = ({ui}) => ({
+    ui
+})
 
-export default connect(null, {addClaim})(AddClaim)
+export default connect(mapStateToProp,{addClaim})(AddClaim)

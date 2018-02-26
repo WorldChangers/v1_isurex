@@ -1,9 +1,10 @@
 import React from 'react';
 import Select from 'react-select'
+import LaddaButton, {CONTRACT_OVERLAY} from 'react-ladda'
 import options from './options'
 import '../AddClient/form.css'
 
-const AddClaim = ({claim,damage,saveChanges, handleSubmit, handleBack,handleOnChange}) => (
+const AddClaim = ({loading, claim,damage,saveChanges, handleSubmit, handleBack,handleOnChange}) => (
     <div style={{paddingTop: 15}} className="animated fadeIn">
             <div className="row">
             <div className="col-md-6 padding">
@@ -63,7 +64,14 @@ const AddClaim = ({claim,damage,saveChanges, handleSubmit, handleBack,handleOnCh
                 </div>
                 <div className="card-footer">
                     <button onClick={handleBack} className="btn btn-sm btn-primary"><i className="fa fa-arrow-left"></i> Prev Client</button>&nbsp;
-                    <button type="submit" className="btn btn-sm btn-primary">Create Claim</button>&nbsp;
+                    <LaddaButton
+                        className="btn btn-success btn-sm btn-ladda"
+                        loading={loading}
+                        data-color="blue"
+                        data-style={CONTRACT_OVERLAY}
+                      >
+                      Create Claim
+                  </LaddaButton>
               </div>
               </form>
               </div>

@@ -13,14 +13,19 @@ class Header extends Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       dropdownOpen: false,
-      org: ''
+      org: '',
+      firstName: ''
     };
   }
 
 
   async componentDidMount(){
-    const user = await localStorage.getItem('user')
-    this.setState({org: JSON.parse(user)})
+    const res = await localStorage.getItem('user')
+    const user = JSON.parse(res)
+    this.setState({org: user})
+    let firstName = user.name.split(' ')
+    this.setState({firstName: firstName[0]})
+    
   }
 
   toggle() {
@@ -51,6 +56,7 @@ class Header extends Component {
 
   render() {
     const {signOut, history} = this.props
+    console.log(this.state)
     return (
       <header className="app-header navbar">
         <button className="navbar-toggler mobile-sidebar-toggler hidden-lg-up" onClick={this.mobileSidebarToggle} type="button">&#9776;</button>
@@ -66,7 +72,7 @@ class Header extends Component {
         </form>
         <ul className="nav navbar-nav ml-auto">
           <li className="nav-item hidden-md-down">
-           <p>{this.state.org.org}</p> 
+           <p>{this.state.org.org} || {this.state.firstName}</p> 
           </li>
           <li className="nav-item dropdown">
             <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>

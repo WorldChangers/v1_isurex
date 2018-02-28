@@ -1,5 +1,5 @@
-//const ROOT_URL = 'https://insurex-api.herokuapp.com/api/v1';
-const ROOT_URL = 'http://localhost:3000/api/v1'
+const ROOT_URL = 'https://insurex-api.herokuapp.com/api/v1';
+//const ROOT_URL = 'http://localhost:3000/api/v1'
 
 export default {
 	LOGIN: `${ROOT_URL}/users/login`,

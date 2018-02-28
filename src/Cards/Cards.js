@@ -18,6 +18,7 @@ class Cards extends PureComponent {
      this.props.fetchClients()
   }
 
+
   toggle = () => {
     this.setState({
       modal: !this.state.modal,
@@ -41,6 +42,7 @@ class Cards extends PureComponent {
           <td>{p.fullname}</td>
           <td>+233 {p.phone}</td>
           <td>{p.location}</td>
+          <td>{p.organization.org}</td>
           <td>
             <span className="badge badge-success">False</span>
           </td>
@@ -57,6 +59,7 @@ class Cards extends PureComponent {
           <td>{p.fullname}</td>
           <td>+233 {p.phone}</td>
           <td>{p.location}</td>
+          <td>{p.organization.org}</td>
           <td>
             <span className="badge badge-success">False</span>
           </td>
@@ -94,6 +97,7 @@ class Cards extends PureComponent {
                       <th>Full Name</th>
                       <th>Phone Number</th>
                       <th>Location</th>
+                      <th>Company</th>
                       <th>Fraud</th>
                     </tr>
                   </thead>

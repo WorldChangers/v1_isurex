@@ -3,6 +3,7 @@ import { Dropdown, DropdownMenu, DropdownItem } from 'reactstrap';
 import { connect } from 'react-redux';
 import { signOut } from '../actions/auth';
 import { search } from '../actions/claim'
+import deImage from '../default.png'
 
 class Header extends Component {
 
@@ -11,8 +12,15 @@ class Header extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      dropdownOpen: false
+      dropdownOpen: false,
+      org: ''
     };
+  }
+
+
+  async componentDidMount(){
+    const user = await localStorage.getItem('user')
+    this.setState({org: JSON.parse(user)})
   }
 
   toggle() {
@@ -58,12 +66,12 @@ class Header extends Component {
         </form>
         <ul className="nav navbar-nav ml-auto">
           <li className="nav-item hidden-md-down">
-            <a className="nav-link nav-pill" href="#"><i className="icon-bell"></i><span className="badge badge-pill badge-danger">5</span></a>
+           <p>{this.state.org.org}</p> 
           </li>
           <li className="nav-item dropdown">
             <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
               <a onClick={this.toggle} className="nav-link nav-pill avatar" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded={this.state.dropdownOpen}>
-                <img src='#' className="img-avatar" alt="#"/>
+                <img src={deImage} className="img-avatar" alt="#"/>
               </a>
 
               <DropdownMenu className="dropdown-menu-right">

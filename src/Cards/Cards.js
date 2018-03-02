@@ -68,9 +68,6 @@ class Cards extends PureComponent {
     }
    
     const { location } = this.props
-    const {modal, details} = this.state
-    const {vehicles} = details
-    const {claims} =  vehicles || {}
     return (
       <div>
       <div style={{paddingTop:10}} className="animated fadeIn">

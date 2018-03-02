@@ -76,7 +76,9 @@ const DisplaySearch = ({state, loading,company}) => (
                 <p><strong>Description of {e.type}: </strong> {e.description}</p>
                 <p><strong>Damaged Place Vehicle: </strong> {e.damagedPlace}</p>
                 {
-                    company !== e.company ?  <p><strong>Company Claim Recorded: </strong> {e.company}</p> : null
+                    company !== e.company ?  
+                        <p><strong>Company Claim Recorded: </strong> {e.company}</p> 
+                      :  <Link className='btn btn-info' to={{ pathname: '/claims/edit', state: { disabled: true} }}>Edit Claim</Link>
                 }
           </div> 
           )): 

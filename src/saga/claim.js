@@ -34,6 +34,13 @@ export function* addClaimSaga(action) {
     
     yield call(API.vehicle.addVehicle, vehicle)
 
+
+    //const user = yield JSON.parse(localStorage.getItem('user'))
+
+    yield user.clients.push(1)
+
+    yield localStorage.setItem('user', JSON.stringify(user));
+
     // Remove Storage items
     yield localStorage.removeItem('client')
     yield localStorage.removeItem('vehicle')

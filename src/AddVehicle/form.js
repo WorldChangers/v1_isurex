@@ -40,7 +40,7 @@ const AddVehicle = ({handleSubmit,data,handleBack, handleOnChange}) => (
         </div>
         <div className="form-group">
           <label htmlFor="vat">Policy Number</label>
-          <input type="number" value={data.policyNumber} onChange={handleOnChange} className="form-control" name='policyNumber' placeholder="Policy Number"/>
+          <input type="text" value={data.policyNumber} onChange={handleOnChange} className="form-control" name='policyNumber' placeholder="Policy Number"/>
         </div>
         <div className="card-footer">
             <button onClick={handleBack} className="btn btn-sm btn-primary"><i className="fa fa-arrow-left"></i> Prev Client</button>&nbsp;

@@ -11,7 +11,8 @@ class AddVehicle extends PureComponent {
             regNumber: '',
             chassisNumber: '',
             insuranceType: '',
-            purpose: ''
+            purpose: '',
+            policyNumber: ''
         },
         error: ''
       }

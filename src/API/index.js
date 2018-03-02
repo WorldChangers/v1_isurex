@@ -18,7 +18,9 @@ export default {
 		getAllClaims: () => axios.get(URL.getAllClaims)
 	},
 	vehicle: {
-		addVehicle: (data) => axios.post(URL.CREATE_VEHICLE, data)
+		addVehicle: (data) => axios.post(URL.CREATE_VEHICLE, data),
+		search: (search, term) => axios.post(URL.SEARCH, {search, term}),
+		addClaim: (claim, id) => axios.post(URL.ADD_CLAIM, {claim, id})
 	},
 	claim: {
 		addClaim: (data) =>  axios.post(URL.CREATE_CLAIM, data)

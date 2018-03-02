@@ -6,11 +6,12 @@ class AddClient extends PureComponent {
 
     state = {
         client: {
-            fullname: '',
+            name: '',
             phone: '',
-            id: '',
+            idNumber: '',
             idType: '',
-            location: ''
+            location: '',
+            fraud: ''
         },
         error: ''
       }

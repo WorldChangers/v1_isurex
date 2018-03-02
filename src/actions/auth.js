@@ -1,9 +1,9 @@
 import { AUTH_USER, END_CALL, SIGNUP_USER } from './types';
 
-export function signOut(history) {
-  localStorage.removeItem('user');
-  history.push('/login')
-  return { type: END_CALL }
+export async function signOut(history) {
+  await localStorage.clear()
+  await history.push('/login')
+  //return { type: END_CALL }
 }
 
 export const signInUser = (data, history) => ({

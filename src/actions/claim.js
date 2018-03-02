@@ -11,7 +11,9 @@ export const fetchClients = () => ({
   type: FETCH_CLIENTS
 })
 
-export const search = (word) => ({
+export const search = (search, term, history) => ({
   type: SEARCH_TEXT,
-  word
+  search, 
+  term, 
+  history
 })

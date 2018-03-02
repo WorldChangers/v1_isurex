@@ -5,7 +5,7 @@ const AddClient = ({handleSubmit,handleChange, data}) => (
   <div style={{paddingTop: 15}} className="animated fadeIn">
   <div className="row">
   <div className="col-md-6 padding">
-
+  <p>Add new Claim Record</p>
   <div className="card">
     <div className="card-header">
       <strong>Client</strong> <small>Information</small>
@@ -14,7 +14,7 @@ const AddClient = ({handleSubmit,handleChange, data}) => (
       <form onSubmit={handleSubmit} method='post'>
       <div className="form-group">
         <label htmlFor="company">Fullname</label>
-        <input required type="text" onChange={handleChange} value={data.fullname} className="form-control" name='fullname'  placeholder="Enter your fullname"/>
+        <input required type="text" onChange={handleChange} value={data.name} className="form-control" name='name'  placeholder="Enter your fullname"/>
       </div>
 
       <div className="form-group">
@@ -37,14 +37,22 @@ const AddClient = ({handleSubmit,handleChange, data}) => (
 
           <div className="form-group col-sm-4">
               <label htmlFor="postal-code">ID Number</label>
-              <input required type="text" onChange={handleChange} value={data.id} className="form-control" name='id' placeholder="ID Number"/>
+              <input required type="number" onChange={handleChange} value={data.idNumber} className="form-control" name='idNumber' placeholder="ID Number"/>
           </div>
       </div>
       <div className="form-group">
         <label htmlFor="country">Location</label>
         <input required type="text" onChange={handleChange} value={data.location} className="form-control" name='location' placeholder="Location name"/>
       </div>
-      
+       <div className='form-group' onChange={handleChange}>
+             <label className="form-control-label">Has client involved in Fraud ?</label>
+                <label className="radio-inline" htmlFor="inline-radio1">&nbsp;&nbsp;&nbsp;
+                    <input required type="radio" name="fraud" value="True" checked={data.fraud === 'True'}/> Yes
+                </label> &nbsp;&nbsp;&nbsp;
+                <label className="radio-inline" htmlFor="inline-radio2">
+                    <input required type="radio" name="fraud" value="False" checked={data.fraud === 'False'}/> No
+                </label>&nbsp;&nbsp;&nbsp;        
+      </div>
       <div className="card-footer">
           <button type="submit" className="btn btn-sm btn-primary"><i className="fa fa-arrow-right"></i> Next Vehicle</button>&nbsp;
     </div>

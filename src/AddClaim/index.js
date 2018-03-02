@@ -30,6 +30,7 @@ class AddClaim extends PureComponent {
             date: '',
             paid:'',
             damagedPlace: [],
+            fraud: '',
             type: 'Accident'
         },
         damage: [],
@@ -70,8 +71,8 @@ class AddClaim extends PureComponent {
     }
 
     render(){
-        console.log(this.props.ui)
         const { claim, damage } = this.state
+        const { disabled } = this.props.location.state || false
         return (
             <Home location={this.props.location}>
                 <Form
@@ -82,6 +83,8 @@ class AddClaim extends PureComponent {
                     saveChanges={this.saveChanges}
                     claim={claim}
                     damage={damage}
+                    disabled={disabled}
+                    
                 />
             </Home>
         )

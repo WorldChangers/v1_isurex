@@ -4,7 +4,7 @@ import LaddaButton, {CONTRACT_OVERLAY} from 'react-ladda'
 import options from './options'
 import '../AddClient/form.css'
 
-const AddClaim = ({loading, claim,damage,saveChanges, handleSubmit, handleBack,handleOnChange}) => (
+const AddClaim = ({disabled, loading, claim,damage,saveChanges, handleSubmit, handleBack,handleOnChange}) => (
     <div style={{paddingTop: 15}} className="animated fadeIn">
             <div className="row">
             <div className="col-md-6 padding">
@@ -62,8 +62,17 @@ const AddClaim = ({loading, claim,damage,saveChanges, handleSubmit, handleBack,h
                             <input required type="radio" name="paid" value="Pending" checked={claim.paid === 'Pending'}/> Pending
                         </label>                
                 </div>
+                <div className='form-group' onChange={handleOnChange}>
+                    <label className="form-control-label">Was the Claim Fraud ?</label>
+                        <label className="radio-inline" htmlFor="inline-radio1">&nbsp;&nbsp;&nbsp;
+                            <input required type="radio" name="fraud" value="True" checked={claim.fraud === 'True'}/> Yes
+                        </label> &nbsp;&nbsp;&nbsp;
+                        <label className="radio-inline" htmlFor="inline-radio2">
+                            <input required type="radio" name="fraud" value="False" checked={claim.fraud === 'False'}/> No
+                        </label>&nbsp;&nbsp;&nbsp;        
+                </div>
                 <div className="card-footer">
-                    <button onClick={handleBack} className="btn btn-sm btn-primary"><i className="fa fa-arrow-left"></i> Prev Client</button>&nbsp;
+                    <button disabled={disabled} onClick={handleBack} className="btn btn-sm btn-primary"><i className="fa fa-arrow-left"></i> Prev Client</button>&nbsp;
                     <LaddaButton
                         className="btn btn-success btn-sm btn-ladda"
                         loading={loading}

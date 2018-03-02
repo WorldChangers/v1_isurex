@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux'
-import axios from 'axios'
+import { withRouter } from 'react-router-dom'
 import { fetchClients } from '../actions/claim'
 import  ClientDetails from '../Modal'
 import Loader from '../Loader'
@@ -8,13 +8,16 @@ import Loader from '../Loader'
 class Cards extends PureComponent {
 
   state = {
-    person : [],
-    modal: false,
     details: {}
   }
 
+  // shouldComponentUpdate(props, nextProps){
+  //   if(!props.clients.clients){
+  //     return false
+  //   }
+  // }
 
-   componentWillMount(){
+   componentDidMount(){
      this.props.fetchClients()
   }
 
@@ -26,11 +29,16 @@ class Cards extends PureComponent {
   }
 
 
-  clientDetails = (e, p) => {
-    this.setState({
-      details: p,
-      modal: true,
+  clientDetails = async (e, p) => {
+    await this.setState({
+      details: p
+    });
+
+    await this.props.history.push({
+      pathname: '/search',
+      state: {...this.state.details }
     })
+
   }
 
 
@@ -38,27 +46,16 @@ class Cards extends PureComponent {
     return this.props.clients.clients.map((p, i) => {
       return (
         <tr onClick={(e) => this.clientDetails(e, p)} style={{cursor: 'pointer'}} key={i}>
-          <td>{p.fullname}</td>
+          <td>{p.name}</td>
           <td>+233 {p.phone}</td>
           <td>{p.location}</td>
           <td>
-            <span className="badge badge-success">False</span>
-          </td>
-      </tr>
-      )
-    })
-  }
-
-
-  renderPersons = () => {
-    return this.props.clients.search.map((p, i) => {
-      return (
-        <tr onClick={(e) => this.clientDetails(e, p)} style={{cursor: 'pointer'}} key={i}>
-          <td>{p.fullname}</td>
-          <td>+233 {p.phone}</td>
-          <td>{p.location}</td>
-          <td>
-            <span className="badge badge-success">False</span>
+            {p.fraud === 'True' &&
+               <span className="badge badge-danger">True</span>
+            }
+            {p.fraud === 'False' &&
+                <span className="badge badge-success">False</span>
+              }
           </td>
       </tr>
       )
@@ -72,20 +69,16 @@ class Cards extends PureComponent {
    
     const { location } = this.props
     const {modal, details} = this.state
-     const {vehicles} = details
-     const {claims} =  vehicles || {}
-     console.log(this.props)
+    const {vehicles} = details
+    const {claims} =  vehicles || {}
     return (
       <div>
-       {
-          modal && <ClientDetails {...details} modal={true} toggle={this.toggle} />
-       }
       <div style={{paddingTop:10}} className="animated fadeIn">
           <div className="row">
           <div className="col-lg-12">
             <div className="card">
               <div className="card-header">
-                <i className="fa fa-align-justify"></i> Clients
+                <i className="fa fa-align-justify"></i>Your Clients Record
               </div>
               <div className="card-block">
                 <table className="table table-bordered table-striped table-condensed">
@@ -98,25 +91,9 @@ class Cards extends PureComponent {
                     </tr>
                   </thead>
                   <tbody>
-                    {
-                      location.pathname === '/claims' ? this.claimShow():this.renderPersons()}
+                    {this.claimShow()}
                   </tbody>
                 </table>
-                {
-                   location.pathname === '/claims' &&   
-                   <nav>
-                    <ul className="pagination">
-                      <li className="page-item"><a className="page-link" href="#">Prev</a></li>
-                      <li className="page-item active">
-                        <a className="page-link" href="#">1</a>
-                      </li>
-                      <li className="page-item"><a className="page-link" href="#">2</a></li>
-                      <li className="page-item"><a className="page-link" href="#">3</a></li>
-                      <li className="page-item"><a className="page-link" href="#">4</a></li>
-                      <li className="page-item"><a className="page-link" href="#">Next</a></li>
-                    </ul>
-                 </nav>
-                }
               </div>
             </div>
           </div>
@@ -131,5 +108,5 @@ const mapStateToProps = ({clients}) => ({
   clients
 })
  
-
-export default connect(mapStateToProps, {fetchClients})(Cards);
+const withRoute =  withRouter(Cards)
+export default connect(mapStateToProps, {fetchClients})(withRoute);

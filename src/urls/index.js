@@ -5,7 +5,8 @@ export default {
 	LOGIN: `${ROOT_URL}/users/login`,
 	SIGNUP: `${ROOT_URL}/users/signup`,
 	CREATE_CLIENT: `${ROOT_URL}/clients`,
-	CREATE_VEHICLE:`${ROOT_URL}/vehicles`,
-	CREATE_CLAIM:`${ROOT_URL}/claims`,
+	ADD_CLAIM: `${ROOT_URL}/vehicles/addClaims`,
+	CREATE_VEHICLE:`${ROOT_URL}/vehicles/claims`,
+	SEARCH:`${ROOT_URL}/vehicles/search`,
 	getAllClaims: `${ROOT_URL}/clients`
 };

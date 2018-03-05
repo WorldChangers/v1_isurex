@@ -7,6 +7,8 @@ export default {
 	CREATE_CLIENT: `${ROOT_URL}/clients`,
 	ADD_CLAIM: `${ROOT_URL}/vehicles/addClaims`,
 	CREATE_VEHICLE:`${ROOT_URL}/vehicles/claims`,
+	GET_RISK_SCORE: `${ROOT_URL}/vehicles/riskScore`,
 	SEARCH:`${ROOT_URL}/vehicles/search`,
-	getAllClaims: `${ROOT_URL}/clients`
+	getAllClaims: `${ROOT_URL}/clients`,
+	GET_RISK_SCORE: `${ROOT_URL}/vehicles/riskScore/:id`
 };

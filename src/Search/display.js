@@ -3,20 +3,27 @@ import LaddaButton, {CONTRACT_OVERLAY} from 'react-ladda'
 import { Link } from 'react-router-dom'
 
 
-const DisplaySearch = ({state, loading,company}) => (
+const DisplaySearch = ({state, riskScore, loading,company, calculateRiskScore}) => (
     <div className="animated fadeIn" style={{marginTop:'3%'}}>
       <div style={{display: 'flex', flexDirection:'row', justifyContent:'space-between'}}>
-      <Link className='btn btn-success' to={{ pathname: '/claims/new', state: { disabled: true} }}>Add Claim to Record</Link>
-        <LaddaButton
-        className="btn btn-success btn-lg"
-        loading={loading}
-        // onClick={() => this.toggle('expOverlay')}
-        data-style={CONTRACT_OVERLAY}
-      >
-    RISK SCORE
-  </LaddaButton>
+    <Link className='btn btn-success' to={{ pathname: '/claims/new', state: { disabled: true} }}>Add Claim to Record</Link>
+    {
+      riskScore !== '' ? <p style={{color:'Red'}}>{state.name} Risk Score is <span style={{fontSize:50, marginTop: 10}}>{riskScore}%</span></p>:null
+    }
+    {
+      state.name ?  <LaddaButton
+                      className="btn btn-danger"
+                      disabled={riskScore !== ''}
+                      loading={loading}
+                      onClick={calculateRiskScore}
+                      data-style={CONTRACT_OVERLAY}
+                    >
+                    RISK SCORE
+                  </LaddaButton> : null
+    }
+   
   </div>
-     <h3 style={{display: 'flex',flexDirection:'row', alignSelf: 'center'}}>{state.company.company}</h3>
+     <h3 style={{display: 'flex',flexDirection:'row', alignSelf: 'center'}}></h3>
     <div className="row">
     {state.vehicle && 
     <div className="col-sm-6 col-md-4">
@@ -78,7 +85,7 @@ const DisplaySearch = ({state, loading,company}) => (
                 {
                     company !== e.company ?  
                         <p><strong>Company Claim Recorded: </strong> {e.company}</p> 
-                      :  <Link className='btn btn-info' to={{ pathname: '/claims/edit', state: { disabled: true} }}>Edit Claim</Link>
+                      :  <Link className='btn btn-info' to={{ pathname: `/claims/edit/${state.vehicle._id}`, state: {claim: state} }}>Edit Claim</Link>
                 }
           </div> 
           )): 

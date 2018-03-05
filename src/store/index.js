@@ -4,6 +4,7 @@ import createSagaMiddleware from 'redux-saga';
 import AuthReducer from '../reducers/auth';
 import ClaimReducer from '../reducers/claim';
 import UIReducer from '../reducers/ui'
+import SearchReducer from '../reducers/search'
 
 import rootSaga from '../saga';
 import { AUTH_USER } from '../actions/types';
@@ -11,7 +12,8 @@ import { AUTH_USER } from '../actions/types';
 const rootReducer = combineReducers({
 	auth: AuthReducer,
 	clients: ClaimReducer,
-	ui: UIReducer
+	ui: UIReducer,
+	search: SearchReducer
 });
 
 const sagaMiddleware = createSagaMiddleware();

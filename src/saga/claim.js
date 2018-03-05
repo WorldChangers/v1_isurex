@@ -1,5 +1,5 @@
 import { call, put } from 'redux-saga/effects';
-import { START_CALL, END_CALL, ERROR_CALL,CLIENT_FETCHED } from '../actions/types';
+import { START_CALL, END_CALL, ERROR_CALL,CLIENT_FETCHED,SEARCH_RESULT } from '../actions/types';
 import API from '../API';
 
 export function* addClaimSaga(action) {
@@ -81,6 +81,7 @@ export function* searchSaga(action) {
       yield localStorage.setItem('vehicleId', res.data._id)
     }
    
+    yield localStorage.setItem('search', JSON.stringify(res.data))
     yield action.history.push({
       pathname: '/search',
       state: {...res.data }

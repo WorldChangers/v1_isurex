@@ -8,4 +8,5 @@ export const UNAUTH_USER = 'UNAUTH_USER';
 export const CREATE_CLAIM = 'CREATE_CLAIM';
 export const SEARCH_TEXT = 'SEARCH_TEXT';
 export const FETCH_CLIENTS = 'FETCH_CLIENTS';
-export const CLIENT_FETCHED = 'CLIENT_FETCHED';
+export const CLIENT_FETCHED = 'CLIENT_FETCHED'; 
+export const SEARCH_RESULT = 'SEARCH_RESULT'

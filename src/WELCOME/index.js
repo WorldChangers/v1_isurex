@@ -265,7 +265,7 @@ const mainChartOpts = {
       hoverBorderWidth: 3,
     }
   }
-}
+};
 
 class Welcome extends Component {
 
@@ -274,9 +274,17 @@ class Welcome extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      dropdownOpen: false
+      dropdownOpen: false,
+      clients: 0
     };
   }
+
+  async componentWillMount(){
+    const res = await localStorage.getItem('user')
+    const user = JSON.parse(res)
+    this.setState({clients:user.clients.length})
+  }
+
 
   toggle() {
     this.setState({
@@ -294,8 +302,8 @@ class Welcome extends Component {
                 <button type="button" className="btn btn-transparent active p-0 float-right">
                   <i className="icon-location-pin"></i>
                 </button>
-                <h4 className="mb-0">23</h4>
-                <p>COMPANIES</p>
+                <h4 className="mb-0">{this.state.clients}</h4>
+                <p>CLIENTS</p>
               </div>
               <div className="chart-wrapper px-1" style={{ height: 70 + 'px' }}>
                 <Line data={cardChartData1} options={cardChartOpts1} height={70}/>

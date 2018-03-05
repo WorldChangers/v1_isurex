@@ -1,11 +1,15 @@
 import React, { PureComponent } from 'react'
-import { connect } from 'react-redux';
-import { addClaim } from '../actions/claim'
 import Home from '../Home'
 import Form from './form'
 
-class AddClaim extends PureComponent {
-    
+class EditClaim extends PureComponent {
+    state = {
+            search: {},
+            damage: [],
+            error: '',
+            isLoading: false
+      }
+
     saveChanges = (damage) => {
         //onst [label] = damage
         const am = damage.map(d => d.value)
@@ -23,28 +27,14 @@ class AddClaim extends PureComponent {
         this.setState({type: target.value})
     }
 
-    state = {
-        claim: {
-            driver: '',
-            description:'',
-            date: '',
-            placeReported: '',
-            paid:'',
-            damagedPlace: [],
-            fraud: '',
-            type: 'Accident'
-        },
-        damage: [],
-        error: '',
-        isLoading: false
-      }
-
-      async componentDidMount(){
-        const claim = await localStorage.getItem('claim')
-
-        
-        if(claim){
-            return this.setState({claim: JSON.parse(claim)})
+      async componentWillMount(){
+        //const claim = await localStorage.getItem('claim')
+        const res = await localStorage.getItem('search')
+        const search = JSON.parse(res)
+        if(res){
+            return this.setState({
+                search: search.vehicle
+            })
         }
       }
 
@@ -72,28 +62,23 @@ class AddClaim extends PureComponent {
     }
 
     render(){
-        const { claim, damage } = this.state
-        const { disabled } = this.props.location.state || false
+        const {  damage } = this.state
+        console.log(this.state.search)
         return (
             <Home location={this.props.location}>
                 <Form
                     loading={this.state.isLoading}
-                    handleSubmit={this.handleSubmit}
-                    handleBack={this.handleBack}
+                    //handleSubmit={this.handleSubmit}
                     handleOnChange={this.handleOnChange}
                     saveChanges={this.saveChanges}
-                    claim={claim}
+                    search={this.state.search}
                     damage={damage}
-                    disabled={disabled}
-                    
                 />
             </Home>
         )
     }
 }
 
-const mapStateToProp = ({ui}) => ({
-    ui
-})
 
-export default connect(mapStateToProp,{addClaim})(AddClaim)
+
+export default EditClaim

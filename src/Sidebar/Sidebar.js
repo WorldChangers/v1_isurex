@@ -33,6 +33,9 @@ class Sidebar extends Component {
                 <li className="nav-item">
                   <Link to={'/clients/new'} className="nav-link" ><i className="icon-puzzle"></i> Add</Link>
                 </li>
+                <li className="nav-item">
+                  <Link to={'/claims/load'} className="nav-link" ><i className="icon-puzzle"></i>Upload CSV</Link>
+                </li>
               </ul>
             </li>
             <li className={this.activeRoute("/analytics")}>

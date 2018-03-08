@@ -8,7 +8,7 @@ const DisplaySearch = ({state, riskScore, loading,company, calculateRiskScore}) 
       <div style={{display: 'flex', flexDirection:'row', justifyContent:'space-between'}}>
     <Link className='btn btn-success' to={{ pathname: '/claims/new', state: { disabled: true} }}>Add Claim to Record</Link>
     {
-      riskScore !== '' ? <p style={{color:'Red'}}>{state.name} Risk Score is <span style={{fontSize:50, marginTop: 10}}>{riskScore}%</span></p>:null
+      riskScore !== '' ? <p style={{color:'Red'}}>Risk Score is <span style={{fontSize:50, marginTop: 10}}>{riskScore}</span></p>:null
     }
     {
       state.name ?  <LaddaButton
@@ -25,7 +25,7 @@ const DisplaySearch = ({state, riskScore, loading,company, calculateRiskScore}) 
   </div>
      <h3 style={{display: 'flex',flexDirection:'row', alignSelf: 'center'}}></h3>
     <div className="row">
-    {state.vehicle && 
+    {(company === state.company.company) ||( company === state.vehicle.company) &&
     <div className="col-sm-6 col-md-4">
       <div className="card card-outline-primary">
         <div className="card-header">

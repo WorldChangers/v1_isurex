@@ -1,4 +1,4 @@
-import { CREATE_CLAIM, SEARCH_TEXT, FETCH_CLIENTS } from './types';
+import { CREATE_CLAIM, SEARCH_TEXT, FETCH_CLIENTS, UPLOAD_FILE } from './types';
 
 
 export const addClaim = (history) => ({
@@ -16,4 +16,10 @@ export const search = (search, term, history) => ({
   search, 
   term, 
   history
+})
+
+
+export const createWithUpload = (files=[], history) => ({
+  type: UPLOAD_FILE,
+  files
 })

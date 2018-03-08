@@ -47,7 +47,6 @@ class Search extends PureComponent {
     }
     render(){
         const { state } = this.props.location
-        console.log(this.state)
         if(!state) {
             return (
             <Home location={this.props.location}>

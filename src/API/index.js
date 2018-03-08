@@ -15,10 +15,12 @@ export default {
 	},
 	client: {
 		addClient: (data) => axios.post(URL.CREATE_CLIENT, data),
+		uploadClient: (fullname, phone, location, idType, idNumber, fraud) => console.log(fullname, phone, location, idType, idNumber, fraud),
 		getAllClaims: () => axios.get(URL.getAllClaims)
 	},
 	vehicle: {
 		addVehicle: (data) => axios.post(URL.CREATE_VEHICLE, data),
+		uploadVehicle: (regNumber) => console.log(regNumber),
 		search: (search, term) => axios.post(URL.SEARCH, {search, term}),
 		addClaim: (claim, id) => axios.post(URL.ADD_CLAIM, {claim, id})
 	},

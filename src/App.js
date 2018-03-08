@@ -11,6 +11,7 @@ import AddVehicle from './AddVehicle'
 import AddClaim from './AddClaim'
 import EditClaim from './editClaim'
 import Error from './ErrorPage'
+import CSV from './CSV'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -37,6 +38,7 @@ const App = () => (
               <PrivateRoute exact path='/' component={GRAPH} />
               <PrivateRoute exact path='/search' component={Search} />
               <PrivateRoute exact path='/claims' component={Claims} />
+              <PrivateRoute exact path='/claims/load' component={CSV} />
               <PrivateRoute exact path='/claims/edit/:id' component={EditClaim} />
               <PrivateRoute exact path='/clients/new' component={AddClient} />
               <PrivateRoute exact path='/vehicles/new' component={AddVehicle} />

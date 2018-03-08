@@ -95,3 +95,41 @@ export function* searchSaga(action) {
     
   }
 }
+
+
+
+export function* uploadDataSaga(action){
+  try {
+
+    //yield put({type: START_CALL})
+
+    for(let i=0; i < action.files.length;i++){
+      const fullname = action.files[i]['Fullname']
+      // const phone = data['Phone Number']
+      // const idType = data['ID Type']
+      // const idNumber = data['ID Number']
+      // const location = data['Location']
+      // const fraud = data['Fraud']
+      const regNumber = action.files[i]['Registration Number']
+      call(API.vehicle.uploadVehicle({regNumber}))
+      call(API.client.uploadClient({fullname}))
+    }
+  
+  //  yield action.files.map(function*(data){
+  //     console.log(data)
+  //     // const fullname = data['Fullname']
+  //     // const phone = data['Phone Number']
+  //     // const idType = data['ID Type']
+  //     // const idNumber = data['ID Number']
+  //     // const location = data['Location']
+  //     // const fraud = data['Fraud']
+  //     // const regNumber = data['Registration Number']
+  //     // yield call(API.vehicle.uploadVehicle({regNumber}))
+  //     // yield call(API.client.uploadClient({fullname, phone, idType, idNumber, location, fraud}))
+  //     //axios.post()
+  //   })
+    
+  } catch (e) {
+    console.log(e)
+  }
+}

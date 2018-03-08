@@ -9,4 +9,5 @@ export const CREATE_CLAIM = 'CREATE_CLAIM';
 export const SEARCH_TEXT = 'SEARCH_TEXT';
 export const FETCH_CLIENTS = 'FETCH_CLIENTS';
 export const CLIENT_FETCHED = 'CLIENT_FETCHED'; 
-export const SEARCH_RESULT = 'SEARCH_RESULT'
+export const SEARCH_RESULT = 'SEARCH_RESULT';
+export const UPLOAD_FILE = 'UPLOAD_FILE';   

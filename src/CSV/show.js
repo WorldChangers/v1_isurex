@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import { Fade } from 'reactstrap'
 
-
-const Show = ({file}) => (
+const Show = ({file,fraud, handleMessage}) => (
     <div className="animated fadeIn">
+         
         <div className="row">
         <div className="col-sm-6 col-md-4">
         <div className="card card-outline-info">
@@ -15,7 +16,6 @@ const Show = ({file}) => (
              <p><strong>ID Number: {file['ID Number']}</strong></p>
              <p><strong>Phone: +{file['Phone Number']}</strong></p>
              <p><strong>Location: {file['Location']}</strong></p>
-             <p><strong>Fraud: {file['Fraud']}</strong></p>
            </div>
         </div>
         </div>
@@ -33,20 +33,34 @@ const Show = ({file}) => (
             </div>   
         </div>
         </div>
-        <div className="col-sm-6 col-md-4">
+        <div className="col-sm-6 col-md-4" style={{cursor:'pointer'}}>
         <div className="card card-outline-danger">
             <div className="card-header">
             Claims Information
             </div>
-            <div className="card-block">
-            <p><strong>Type of Incidence: {file['Type Incidence']}</strong> </p>
-                <p><strong>Date of Incidence: {file['Date Incident Occured']}</strong></p>
-                <p><strong>Person Driving: {file['Person Driving']}</strong> </p>
-                <p><strong>Was the Claim Fraud: {file['Was the Claim Fraud ?']}</strong></p>
-                <p><strong>Was the Claim Paid: {file['Has the Claim been Paid?']}</strong></p> 
-                <p><strong>Description: {file['Description']}</strong></p>
-                <p><strong>Where was it Reported:{file['Where was it reported ?']} </strong></p>
-            </div>
+            { fraud === true && file['ID Number'] === '440346' ?
+                 <div className="card-block">
+                 <h1 onClick={() =>handleMessage(file)} className='animated fadeIn' style={{color:'red'}}>Fraud detected!!!</h1>
+                 <p><strong>Type of Incidence: {file['Type Incidence']}</strong> </p>
+                     <p><strong>Date of Incidence: {file['Date Incident Occured']}</strong></p>
+                     <p><strong>Person Driving: {file['Person Driving']}</strong> </p>
+                     <p><strong>Was the Claim Fraud: {file['Was the Claim Fraud ?']}</strong></p>
+                     <p><strong>Was the Claim Paid: {file['Has the Claim been Paid?']}</strong></p> 
+                     <p><strong>Description: {file['Description']}</strong></p>
+                     <p><strong>Where was it Reported:{file['Where was it reported ?']} </strong></p>
+                 </div>
+                :
+                <div className="card-block">
+                 <p><strong>Type of Incidence: {file['Type Incidence']}</strong> </p>
+                     <p><strong>Date of Incidence: {file['Date Incident Occured']}</strong></p>
+                     <p><strong>Person Driving: {file['Person Driving']}</strong> </p>
+                     <p><strong>Was the Claim Fraud: {file['Was the Claim Fraud ?']}</strong></p>
+                     <p><strong>Was the Claim Paid: {file['Has the Claim been Paid?']}</strong></p> 
+                     <p><strong>Description: {file['Description']}</strong></p>
+                     <p><strong>Where was it Reported:{file['Where was it reported ?']} </strong></p>
+                 </div>
+            }
+           
         </div>
         </div>
         </div>

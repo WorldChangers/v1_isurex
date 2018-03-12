@@ -38,7 +38,7 @@ class Cards extends PureComponent {
       pathname: '/search',
       state: {...this.state.details }
     })
-
+   
   }
 
 

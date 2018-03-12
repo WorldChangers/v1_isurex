@@ -101,33 +101,55 @@ export function* searchSaga(action) {
 export function* uploadDataSaga(action){
   try {
 
-    //yield put({type: START_CALL})
+    const user =  yield JSON.parse(localStorage.getItem('user'))
 
-    for(let i=0; i < action.files.length;i++){
-      const fullname = action.files[i]['Fullname']
-      // const phone = data['Phone Number']
-      // const idType = data['ID Type']
-      // const idNumber = data['ID Number']
-      // const location = data['Location']
-      // const fraud = data['Fraud']
-      const regNumber = action.files[i]['Registration Number']
-      call(API.vehicle.uploadVehicle({regNumber}))
-      call(API.client.uploadClient({fullname}))
+    yield put({type: START_CALL})
+
+    for(let am of action.files){
+      
+      const name = am['Fullname']
+      const phone = am['Phone Number']
+      const idType = am['ID Type']
+      const idNumber = am['ID Number']
+      const location = am['Location']
+      const fraud = am['Fraud']
+      const regNumber = am['Registration Number']
+      const chassisNumber = am['Chassis Number']
+      const purpose = am['Purpose Of Vehicle']
+      const policyNumber = am['Policy Number']
+      const insuranceType = am['Insurance Type']
+
+      const type = am['Type Incidence']
+      const date = am['Date Incident Occured']
+      const driver = am['Person Driving']
+      const claimfraud = am['Was the Claim Fraud ?']
+      const paid = am['Has the Claim been Paid?']
+      const description = am['Description']
+      const placeReported = am['Where was it reported ?']
+
+      // Compiling the client info
+      const client = {name, phone, idType, idNumber,location, fraud, regNumber}
+
+      // Vehicle object
+      const vehicle = {regNumber,chassisNumber, purpose, policyNumber, insuranceType}
+      yield vehicle.company = user.company 
+
+      // Claims object
+      const claims = {type, date, driver, fraud, paid, description, placeReported}
+      yield claims.company = user.company
+      yield vehicle.claims = [claims]
+
+      //Making the call
+      const res = yield call(API.client.uploadClient, client)
+
+      console.log(res.data)
+      yield vehicle.owner = res.data.clientId
+      const veh = yield call(API.vehicle.uploadVehicle, vehicle)
+      console.log(veh)
     }
-  
-  //  yield action.files.map(function*(data){
-  //     console.log(data)
-  //     // const fullname = data['Fullname']
-  //     // const phone = data['Phone Number']
-  //     // const idType = data['ID Type']
-  //     // const idNumber = data['ID Number']
-  //     // const location = data['Location']
-  //     // const fraud = data['Fraud']
-  //     // const regNumber = data['Registration Number']
-  //     // yield call(API.vehicle.uploadVehicle({regNumber}))
-  //     // yield call(API.client.uploadClient({fullname, phone, idType, idNumber, location, fraud}))
-  //     //axios.post()
-  //   })
+
+    yield put({type: END_CALL})
+    yield action.history.push('/claims')
     
   } catch (e) {
     console.log(e)

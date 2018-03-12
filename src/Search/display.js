@@ -25,8 +25,9 @@ const DisplaySearch = ({state, riskScore, loading,company, calculateRiskScore}) 
   </div>
      <h3 style={{display: 'flex',flexDirection:'row', alignSelf: 'center'}}></h3>
     <div className="row">
-    {(company === state.company.company) ||( company === state.vehicle.company) &&
-    <div className="col-sm-6 col-md-4">
+    {
+      company !== state.company.company ?null:
+      <div className="col-sm-6 col-md-4">
       <div className="card card-outline-primary">
         <div className="card-header">
           Client Information

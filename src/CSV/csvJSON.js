@@ -3,10 +3,10 @@ export default (csv) => {
     var lines=csv.split("\n");
   
     var result = [];
-  
+    
     var headers=lines[0].split(",");
   
-    for(var i=1;i<lines.length;i++){
+    for(var i=1;i<lines.length-1;i++){
   
         var obj = {};
         var currentline=lines[i].split(",");

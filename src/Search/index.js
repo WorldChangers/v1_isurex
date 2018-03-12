@@ -14,10 +14,10 @@ class Search extends PureComponent {
         token: ''
     }
 
-    async componentDidMount(){
+    async componentWillMount(){
         const res = await localStorage.getItem('user')
        
-        const {idNumber} = this.props.location.state
+        const {idNumber} = await this.props.location.state
 
         await localStorage.setItem('vehicleId', this.props.location.state.vehicle._id)
         const user = await JSON.parse(res)

@@ -132,6 +132,8 @@ class CSV extends Component{
                  <p><strong>Double Claim Record: Yes</strong> </p>
                      <p><strong>User ID found in Multiple Insurance: Yes</strong></p>
                      <p><strong>Fraud Detected from Previous Claim: Yes </strong> </p>
+
+                     <p><strong>Companies Involved: Enterprise Insurance</strong></p>
                  </div>
                  <div style={{display:'flex',flexDirection:'row'}}>
                  <LaddaButton

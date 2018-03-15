@@ -44,7 +44,6 @@ const Show = ({file,fraud, handleMessage}) => (
                  <p><strong>Type of Incidence: {file['Type Incidence']}</strong> </p>
                      <p><strong>Date of Incidence: {file['Date Incident Occured']}</strong></p>
                      <p><strong>Person Driving: {file['Person Driving']}</strong> </p>
-                     <p><strong>Was the Claim Fraud: {file['Was the Claim Fraud ?']}</strong></p>
                      <p><strong>Was the Claim Paid: {file['Has the Claim been Paid?']}</strong></p> 
                      <p><strong>Description: {file['Description']}</strong></p>
                      <p><strong>Where was it Reported:{file['Where was it reported ?']} </strong></p>
@@ -54,7 +53,6 @@ const Show = ({file,fraud, handleMessage}) => (
                  <p><strong>Type of Incidence: {file['Type Incidence']}</strong> </p>
                      <p><strong>Date of Incidence: {file['Date Incident Occured']}</strong></p>
                      <p><strong>Person Driving: {file['Person Driving']}</strong> </p>
-                     <p><strong>Was the Claim Fraud: {file['Was the Claim Fraud ?']}</strong></p>
                      <p><strong>Was the Claim Paid: {file['Has the Claim been Paid?']}</strong></p> 
                      <p><strong>Description: {file['Description']}</strong></p>
                      <p><strong>Where was it Reported:{file['Where was it reported ?']} </strong></p>

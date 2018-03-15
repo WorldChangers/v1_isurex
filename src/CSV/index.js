@@ -106,12 +106,12 @@ class CSV extends Component{
         if(this.state.showReason){
             return (
             <Home location={this.props.location}>
-            <h2>Why this Claim is Fraud</h2>
+            <h2 style={{textAlign:'center'}}>Fraud Report</h2>
             <div className='row'>
             <div className="col-sm-6 col-md-4" style={{marginTop:'3%'}}>
             <div className="card card-outline-danger">
             <div className="card-header">
-                Fraud Claim
+                Fraudulent Claim
             </div>
                  <div className="card-block">
                  <p><strong>Type of Incidence:  {select['Type Incidence']}</strong> </p>
@@ -126,7 +126,7 @@ class CSV extends Component{
             <div className="col-sm-6 col-md-4" style={{marginTop:'3%'}}>
             <div className="card card-outline-danger">
             <div className="card-header">
-                Reason's Why it is Fraud
+               Fraud Details
             </div>
                  <div className="card-block">
                  <p><strong>Double Claim Record: Yes</strong> </p>
@@ -200,7 +200,7 @@ class CSV extends Component{
                                 style={{display:'flex', 
                                 alignSelf:'center',
                                 color:'green', marginLeft:'70', textAlign:'center'}}>
-                                Anaylzing Claims Report to detect Fraud!!!
+                                Anaylzing Claims...
                             </h2>
                      }
                      </div>

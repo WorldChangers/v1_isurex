@@ -53,10 +53,6 @@ class CSV extends Component{
             }, 1000)
             setTimeout(() => {
                 this.setState({fraud:true, analyze:false})
-                setInterval(() => {
-                    this.setState({fraud:false})
-                    this.setState({fraud: true})
-                }, 2000)
             }, 3000)
         }
         reader.readAsText(files[0]);

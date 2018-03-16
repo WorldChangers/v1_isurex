@@ -53,7 +53,7 @@ class CSV extends Component{
             }, 1000)
             setTimeout(() => {
                 this.setState({fraud:true, analyze:false})
-            }, 3000)
+            }, 5000)
         }
         reader.readAsText(files[0]);
 
@@ -106,7 +106,7 @@ class CSV extends Component{
         if(this.state.showReason){
             return (
             <Home location={this.props.location}>
-            <h2 style={{textAlign:'center'}}>Fraud Report</h2>
+            <h2 style={{textAlign:'center', marginTop:'5%'}}>Suspicious Claim Report</h2>
             <div className='row'>
             <div className="col-sm-6 col-md-4" style={{marginTop:'3%'}}>
             <div className="card card-outline-danger">
@@ -145,12 +145,12 @@ class CSV extends Component{
                         RESOLVE CLAIM
                 </LaddaButton>
                 <LaddaButton
-                        className="btn btn-warning"
+                        className="btn btn-danger"
                         style={{marginBottom: '2%', width:120, marginLeft:10}}
                         data-style={CONTRACT_OVERLAY}
                         onClick={() => this.props.history.push('/claims')}
                         >
-                        IGNORE
+                        MARK AS FRAUD
                 </LaddaButton>
                 </div>
             </div>

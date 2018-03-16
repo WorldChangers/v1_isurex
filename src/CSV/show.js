@@ -40,7 +40,7 @@ const Show = ({file,fraud, handleMessage}) => (
             </div>
             { fraud === true && file['ID Number'] === '440346' ?
                  <div className="card-block">
-                 <h1 onClick={() =>handleMessage(file)} className='animated fadeIn' style={{color:'red'}}>Fraud detected</h1>
+                 <h1 onClick={() =>handleMessage(file)} className='animated fadeIn' style={{color:'red'}}>Fraud Suspected</h1>
                  <p><strong>Type of Incidence: {file['Type Incidence']}</strong> </p>
                      <p><strong>Date of Incidence: {file['Date Incident Occured']}</strong></p>
                      <p><strong>Person Driving: {file['Person Driving']}</strong> </p>
